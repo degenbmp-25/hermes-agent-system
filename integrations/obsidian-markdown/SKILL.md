@@ -22,8 +22,10 @@ Produce Markdown that works well inside Obsidian rather than generic Markdown on
 3. Prefer one concept per note when creating durable knowledge.
 4. Use callouts only when they add scannable structure, not decoration.
 5. Escape pipes and special characters inside tables or avoid tables when list structure is clearer.
-6. Check that new wikilinks either resolve or are intentionally creating new notes.
-7. Keep source/provenance fields when notes are derived from external material.
+6. Use embeds with `![[...]]` for notes, headings, images, PDFs, audio, and other vault-local assets.
+7. Place block IDs carefully: inline after a paragraph, or on a separate line after list/quote blocks.
+8. Check that new wikilinks either resolve or are intentionally creating new notes.
+9. Keep source/provenance fields when notes are derived from external material.
 
 ## Outputs
 
@@ -35,6 +37,7 @@ Produce Markdown that works well inside Obsidian rather than generic Markdown on
 
 - Frontmatter parses as YAML when present.
 - Wikilinks match intended note names.
+- Embeds point to vault-local files or valid note subpaths.
 - The note is readable in plain Markdown and useful in Obsidian.
 
 ## Operating Rules

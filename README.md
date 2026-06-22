@@ -21,7 +21,7 @@ cd hermes-agent-system
 |-----------|-------------------|-------------|
 | `architecture/` | Yes | Multi-instance architecture skills |
 | `core/` | Yes | Setup, maturity, security, logging, and feature-audit skills |
-| `integrations/` | Yes | Obsidian and LLM-wiki workflow skills |
+| `integrations/` | Yes | Obsidian, JSON Canvas, Defuddle, and LLM-wiki workflow skills |
 | `multi-agent/` | Yes | Team profile, operator, and architecture skills |
 | `ops/` | Yes | Kanban, task gate, vault compiler, and memory dashboard operations |
 | `research/` | Yes | Research conversion, atomic notes, ADHD productivity, and vault context skills |

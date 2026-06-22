@@ -22,8 +22,10 @@ Interact with a running Obsidian instance safely and repeatably from shell comma
 3. Prefer exact `path=` when editing files; use `file=` only for wikilink-style resolution.
 4. Quote values containing spaces and use documented newline escaping for multiline content.
 5. For writes, inspect the target note before editing unless creating a new file.
-6. For plugin/theme debugging, capture errors and screenshots before changing code.
-7. Return the command run and the resulting file/path state.
+6. Use `vault=<name>` as the first parameter when multiple vaults are open or the active vault is ambiguous.
+7. Use `silent` for non-interactive writes when the user does not need Obsidian to open the file.
+8. For plugin/theme debugging, reload the plugin, inspect errors, then capture screenshot/DOM evidence before changing code.
+9. Return the command run and the resulting file/path state.
 
 ## Outputs
 
@@ -36,6 +38,7 @@ Interact with a running Obsidian instance safely and repeatably from shell comma
 - Commands succeed without ambiguous file resolution.
 - Writes target the intended vault/file.
 - Plugin debugging includes the observed error, not just a guessed fix.
+- Multi-vault operations name the target vault explicitly.
 
 ## Operating Rules
 

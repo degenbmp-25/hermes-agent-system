@@ -59,6 +59,8 @@ Recommended operating order for a new Hermes node:
 
 ### Integrations
 
+- `defuddle`
+- `json-canvas`
 - `obsidian-bases`
 - `obsidian-cli`
 - `obsidian-markdown`

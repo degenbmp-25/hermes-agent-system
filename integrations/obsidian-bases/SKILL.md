@@ -22,8 +22,10 @@ Build valid Obsidian Bases files that render cleanly and help agents/humans insp
 3. Choose view types needed: table, cards, list, or map.
 4. Write a `.base` file with valid YAML and quote expressions that contain special characters.
 5. Add formulas only when they reduce repeated manual interpretation.
-6. Validate YAML syntax with an available parser or a careful read if no parser exists.
-7. Open or ask the user to open the base in Obsidian and report render errors.
+6. Use file properties such as `file.name`, `file.path`, `file.folder`, `file.ext`, `file.ctime`, `file.mtime`, `file.tags`, `file.links`, and `file.backlinks` when frontmatter is not enough.
+7. For date math, remember that subtracting dates returns a Duration; access `.days`, `.hours`, or another duration field before applying number functions.
+8. Validate YAML syntax with an available parser or a careful read if no parser exists.
+9. Open or ask the user to open the base in Obsidian and report render errors.
 
 ## Outputs
 
@@ -36,6 +38,7 @@ Build valid Obsidian Bases files that render cleanly and help agents/humans insp
 - The file is valid YAML.
 - Filters select the intended notes and not the entire vault by accident.
 - Formula names referenced in views exist in the formulas section.
+- Duration formulas use numeric duration fields such as `.days` before rounding or comparison.
 
 ## Operating Rules
 

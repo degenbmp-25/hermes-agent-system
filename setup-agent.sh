@@ -3,9 +3,8 @@
 # hermes-agent-system / setup-agent.sh
 # One-shot bootstrap for a new agent node.
 #
-# This installs only BeastmodeVault-authored runtime capabilities.
-# X-derived research/reference notes in core/, multi-agent/, research/,
-# integrations/, and architecture/ are intentionally not installed.
+# This installs the BeastmodeVault-authored Hermes skill library. Source links
+# in the skills are provenance, not copied blog excerpts.
 #
 # Usage: ./setup-agent.sh [--skills-dir <path>] [--agent-system openclaw|hermes|auto]
 #
@@ -59,10 +58,26 @@ detect_skills_dir() {
 
 # ── Validate ──────────────────────────────────────────────────────────────────
 validate() {
-  if [[ ! -d "$AGENT_DIR/ops/hermes-vault-compiler" ]]; then
-    echo "[ERROR] 'ops/hermes-vault-compiler/' not found. Run from the hermes-agent-system root."
+  if [[ ! -d "$AGENT_DIR/core" || ! -d "$AGENT_DIR/ops" ]]; then
+    echo "[ERROR] skill category directories not found. Run from the hermes-agent-system root."
     exit 1
   fi
+}
+
+install_category() {
+  local label="$1"
+  local dir="$2"
+
+  if [[ ! -d "$dir" ]]; then
+    return
+  fi
+
+  echo "Installing $label skills..."
+  for skill_dir in "$dir"/*; do
+    if [[ -d "$skill_dir" && -f "$skill_dir/SKILL.md" ]]; then
+      cp -r "$skill_dir" "$SKILLS_DIR/"
+    fi
+  done
 }
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -84,14 +99,14 @@ main() {
   # Create skills directory if it doesn't exist
   mkdir -p "$SKILLS_DIR"
 
-  echo "[1/2] Installing runtime skill..."
-  cp -r "$AGENT_DIR/ops/hermes-vault-compiler" "$SKILLS_DIR/"
-
-  echo "[2/2] Leaving reference notes uninstalled..."
-  echo "      Read these manually when needed:"
-  echo "      - core/hermes-agent-maturity-levels/SKILL.md"
-  echo "      - multi-agent/hermes-multi-agent-team-profiles/SKILL.md"
-  echo "      - multi-agent/hermes-operator-layer/SKILL.md"
+  echo "[1/1] Installing authored skills..."
+  install_category "architecture" "$AGENT_DIR/architecture"
+  install_category "core" "$AGENT_DIR/core"
+  install_category "integrations" "$AGENT_DIR/integrations"
+  install_category "multi-agent" "$AGENT_DIR/multi-agent"
+  install_category "ops" "$AGENT_DIR/ops"
+  install_category "research" "$AGENT_DIR/research"
+  install_category "seo" "$AGENT_DIR/seo"
 
   # Install sync script
   local bin_dir="$HOME/.local/bin"
@@ -100,9 +115,9 @@ main() {
   chmod +x "$bin_dir/hermes-sync.sh"
 
   echo ""
-  echo "✓ Done. Runtime skill installed to: $SKILLS_DIR/hermes-vault-compiler"
+  echo "✓ Done. Authored skills installed to: $SKILLS_DIR"
   echo "✓ Sync script installed to:  $bin_dir/hermes-sync.sh"
-  echo "✓ Reference library left in repo, not runtime context"
+  echo "✓ Source links retained as provenance inside each skill"
   echo ""
   echo "Add to crontab for auto-sync:"
   echo "  crontab -e"

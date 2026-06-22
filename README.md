@@ -1,49 +1,42 @@
-# Hermes Agent System — Vault Compiler + Reference Library
+# Hermes Agent System — Authored Skill Library
 
-> A small installable Hermes/OpenClaw capability plus source-backed research notes for building better agent systems.
+> BeastmodeVault-authored Hermes/OpenClaw skills derived from sourced research and converted into executable procedures.
 
 ## What This Is
 
-This repository has two kinds of material:
-
-1. **Installable runtime skill:** `ops/hermes-vault-compiler`
-2. **Reference/research notes:** X-derived `SKILL.md` files preserved for reading and provenance
-
-The reference notes are not default runtime skills. They do not define tools, schemas, install commands, or reliable runtime behavior. Installing all of them would load a large amount of commentary into context without adding real capability.
+This repository contains authored runtime skills. External X/blog/source links are preserved as provenance, but the skill bodies are BeastmodeVault-authored workflows with procedures, outputs, and validation rules.
 
 ## Quick Start
 
 ```bash
-# Clone and install the one real runtime skill
+# Clone and install the authored skill library
 git clone https://github.com/degenbmp-25/hermes-agent-system.git
 cd hermes-agent-system
 ./setup-agent.sh
-```
-
-By default, `setup-agent.sh` installs only:
-
-```text
-ops/hermes-vault-compiler
 ```
 
 ## What Gets Installed
 
 | Component | Runtime Installed | Description |
 |-----------|-------------------|-------------|
-| `ops/hermes-vault-compiler` | Yes | BeastmodeVault-authored vault structure and validation workflow |
-| `_tools/` | No | Repository validation scripts used by the vault compiler workflow |
-| `templates/` | No | Source manifest, person, decision, and context-pack templates |
-| `core/`, `multi-agent/`, `research/`, `integrations/`, `architecture/` | No | Source-backed reference notes; read manually |
+| `architecture/` | Yes | Multi-instance architecture skills |
+| `core/` | Yes | Setup, maturity, security, logging, and feature-audit skills |
+| `integrations/` | Yes | Obsidian and LLM-wiki workflow skills |
+| `multi-agent/` | Yes | Team profile, operator, and architecture skills |
+| `ops/` | Yes | Kanban, task gate, vault compiler, and memory dashboard operations |
+| `research/` | Yes | Research conversion, atomic notes, ADHD productivity, and vault context skills |
+| `seo/` | Yes | AI-search content strategy skill |
+| `_tools/`, `templates/` | Repo resources | Validation scripts and note templates used by skills |
 
 ## Recommended Reading Order
 
-Read these before adding more runtime surface:
+Start with these when orienting a new Hermes system:
 
 1. `core/hermes-agent-maturity-levels/SKILL.md`
 2. `multi-agent/hermes-multi-agent-team-profiles/SKILL.md`
 3. `multi-agent/hermes-operator-layer/SKILL.md`
 
-Useful background:
+Then use the category-specific skills as needed:
 
 - `core/hermes-setup/SKILL.md`
 - `core/hermes-security/SKILL.md`
@@ -54,22 +47,23 @@ Useful background:
 
 ```text
 hermes-agent-system/
-├── ops/hermes-vault-compiler/   # Installable runtime skill
+├── architecture/                # Authored architecture skills
+├── core/                        # Authored core skills
+├── integrations/                # Authored integration skills
+├── multi-agent/                 # Authored multi-agent skills
+├── ops/                         # Authored operations skills
+├── research/                    # Authored research workflow skills
+├── seo/                         # Authored SEO/AI-search skill
 ├── _tools/                      # Validation scripts
 ├── templates/                   # Vault note templates
-├── core/                        # Reference notes
-├── multi-agent/                 # Reference notes
-├── research/                    # Reference notes
-├── integrations/                # Reference notes
-├── architecture/                # Reference notes
 ├── x-sources/                   # Source provenance
-├── setup-agent.sh               # Installs only hermes-vault-compiler
+├── setup-agent.sh               # Installs authored skills
 └── sync.sh                      # Pull latest repo changes
 ```
 
-## Promote A Reference Into A Skill
+## Skill Authorship Rule
 
-Do not install research notes directly. Promote a reference only after authoring a new BeastmodeVault-owned capability with:
+Do not paste raw source material into runtime skills. A source becomes installable only after it has been rewritten into a BeastmodeVault-authored workflow with:
 
 - a clear trigger/use case
 - concrete steps

@@ -1,140 +1,46 @@
 ---
-type: skill
-name: hermes-setup
-description: Greg Isenberg's practical step-by-step Hermes Agent installation guide. Covers memory system, OpenRouter cost integration, 40+ preloaded skills, Obsidian/GStack integrations, deployment options (bare metal/Docker/Modal), and mobile via Telegram. 393K views.
-date: 2026-04-24
-author: gregisenberg
-source: https://x.com/gregisenberg/status/2046310954351358378
-salience: 0.90
-tags: [hermes, setup, installation, cost-optimization, deployment, mobile]
+name: "hermes-setup"
+description: "Bootstrap or audit a Hermes/OpenClaw agent environment with memory files, skill directory, vault path, sync script, provider configuration, and validation. Use when setting up a new machine, Mac Hermes node, or client agent install."
 ---
 
-# Hermes Agent Setup Guide
+# hermes-setup
 
-**Source:** Greg Isenberg (@gregisenberg) — 393K views, 5.6K bookmarks  
-**Complement:** `hermes-multi-agent-team-profiles` (Neo) = architecture after setup
+## Source Provenance
 
----
+This is a BeastmodeVault-authored operational skill derived from: https://x.com/gregisenberg/status/2046310954351358378
 
-## What Is Hermes
+Use the source as provenance and background only. Follow the procedure below as the executable workflow.
 
-> "Hermes is a personal AI agent that runs in your terminal. Think of it like OpenClaw but with built-in memory, 40+ tools out of the box, and 90% cheaper token costs. You install it with one command."
+## Purpose
 
----
+Provide a real setup workflow instead of a commentary summary about agent setup.
 
-## The 3 Problems Hermes Solves vs OpenClaw
+## Procedure
 
-| Problem | OpenClaw | Hermes |
-|---------|----------|--------|
-| Memory | Session-only, repeats context every time | Built-in persistent memory, learns workflows |
-| Stability | Gateway restarts needed | Runs continuously |
-| Token visibility | Zero visibility into costs | OpenRouter integration = exact cost per task |
+1. Identify platform, shell, home directory, existing Hermes/OpenClaw config, and target vault path.
+2. Inspect before changing: list existing config, skills directory, memory files, schedulers, and sync scripts.
+3. Create missing directories only after confirming target paths.
+4. Install only authored skills or explicitly approved third-party skills. Do not bulk-install research notes.
+5. Create or verify memory files: SOUL, USER, MEMORY, and daily log policy as appropriate for the runtime.
+6. Configure provider credentials by checking presence only; never echo values.
+7. Install sync/validation scripts and run a smoke test.
+8. Write a setup receipt with paths, installed skills, skipped items, and follow-up risks.
 
-**Real result:** One founder went from $130 every 5 days on OpenClaw → $10 on Hermes. Same output.
+## Outputs
 
----
+- Setup receipt
+- Installed-skill list
+- Validation results
+- Follow-up checklist
 
-## Installation
+## Validation
 
-```bash
-# One-command install (per Hermes docs)
-curl -sL https://hermes.example/install | sh
+- A fresh shell can run the installed command/scripts.
+- No existing config is overwritten without backup/merge.
+- The setup receipt names exact paths.
 
-# Or via npm
-npm install -g hermes-ai
-```
+## Operating Rules
 
-After install, connect OpenRouter for cost tracking (free models rotate weekly).
-
----
-
-## Key Features
-
-### Built-in Memory
-> "Hermes remembers everything. Every completed task gets saved to memory. It searches through past logs to find solutions. Over time it literally gets smarter at your specific workflows."
-
-### OpenRouter Integration
-- See exact costs per model per task
-- Free models rotate weekly
-- Switch models without re-configuring
-
-```bash
-hermes config --openrouter-key YOUR_KEY
-hermes models list  # See available models + costs
-```
-
-### 40+ Preloaded Skills (No Hunting for Plugins)
-- Apple Notes
-- iMessage
-- Find My
-- Browser
-- Web Search
-- Image Generation
-- Cron Jobs
-
-### Integrations
-- **Obsidian** — reads entire vault
-- **GStack** — dev environment
-- **Custom skills** — for specific workflows
-
-### The Biggest Money Saver
-> "Have it write code once for recurring tasks. Then it runs without burning tokens every time. Stop paying an LLM to do the same scrape or report daily."
-
-Pattern: Write task logic once → schedule with cron → runs at near-zero cost.
-
-### Mobile: Android via Telegram
-> "Name your agents. Talk to them like coworkers."
-
-```bash
-hermes config --telegram-token YOUR_BOT_TOKEN
-hermes agents list
-# Talk to specific agents by name
-```
-
----
-
-## Deployment Options
-
-| Option | Risk Level | Use Case |
-|--------|-----------|----------|
-| Bare metal | Higher | Full control, self-managed |
-| Docker | Medium | Containerized, consistent |
-| Modal (serverless) | Lower | Pay per use, auto-scale |
-
----
-
-## Setup Order
-
-1. **Install Hermes** — `npm install -g hermes-ai` or one-command install
-2. **Connect OpenRouter** — `hermes config --openrouter-key`
-3. **Verify memory works** — Run a task, ask "what did we work on today?"
-4. **Install integrations** — Obsidian, Telegram per your needs
-5. **Load preloaded skills** — `hermes skills list`
-6. **Set up mobile** — Telegram bot for on-the-go access
-7. **Configure cron** — Automate recurring tasks (zero token burn pattern)
-
----
-
-## Greg's Core Insight
-
-> "The people who hate AI agents are using the wrong setup. Hermes fixes the three things that make AI agents feel broken: memory, stability, cost visibility."
-
----
-
-## Anti-Patterns
-
-❌ **Don't use Hermes the same way as OpenClaw** — The persistent memory changes everything. Stop repeating context.
-❌ **Don't ignore OpenRouter** — Token cost visibility is a game changer for optimization.
-❌ **Don't pay token costs for recurring tasks** — Write once, schedule, run free.
-
----
-
-## Related Skills
-
-- `hermes-multi-agent-team-profiles` — What to do after setup (architecture)
-- `hermes-operator-layer` — Day-30 survival (governance)
-- `hermes-7-new-features` — What's new post-setup
-
----
-
-*Setup is day one. Architecture is what comes next.*
+- Keep source attribution when creating artifacts from this skill.
+- Prefer local files and explicit receipts over vague memory.
+- Ask for approval before external sends, production changes, or destructive actions.

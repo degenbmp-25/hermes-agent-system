@@ -1,87 +1,44 @@
 ---
-type: skill
-name: sharbel-hermes-hudui-memory-dashboard
-description: Use hermes-hudui to monitor Hermes agent memory in real time — active memory, current goals, session history, and memory corruption detection via a web dashboard.
-date: 2026-04-11
-author: Sharbel
-source: https://x.com/sharbel/status/2042519782688211079
-salience: 0.75
-tags: [hermes, memory, monitoring, debugging, dashboard, persistent-memory]
+name: "sharbel-hermes-hudui-memory-dashboard"
+description: "Set up or audit a Hermes memory dashboard workflow for observing active memory, current goals, session history, and corruption/drift indicators. Use when debugging persistent memory behavior or proving agent state to an operator."
 ---
 
-# SKILL.md — hermes-hudui Persistent Memory Dashboard
+# sharbel-hermes-hudui-memory-dashboard
 
-## What It Is
+## Source Provenance
 
-hermes-hudui is an open-source persistent memory dashboard for Hermes AI agents running locally. It connects to your Hermes agent and exposes a web UI that shows what's actually happening in the agent's memory in real time.
+This is a BeastmodeVault-authored operational skill derived from: https://x.com/sharbel/status/2042519782688211079
 
-**The core problem it solves:** Running a local AI agent with persistent memory is powerful — but you have no visibility into what it's actually remembering, what it's thinking about, or when its memory is corrupting. You're flying blind every session.
+Use the source as provenance and background only. Follow the procedure below as the executable workflow.
 
-## Why It Matters
+## Purpose
 
-- **Memory corruption detection** — Catch hallucinations and context drift before they compound
-- **Live consciousness monitor** — See active memory, current goals, session history in real time
-- **Trust through transparency** — You can actually verify what your agent knows and doesn't know
-- **Debugging** — Instead of guessing why your agent behaves oddly, you can see its memory state
+Give operators visibility into what an agent remembers and why it is behaving a certain way.
 
-## The Dashboard Shows
+## Procedure
 
-- **Active memory** — what's currently in the agent's context
-- **Current goals** — what the agent is actively working on
-- **Session history** — past conversations and context
-- **Memory integrity** — health indicators for memory corruption
+1. Identify the dashboard/tool actually available in the environment before giving install advice.
+2. Map memory sources: runtime memory, long-term files, session database, daily logs, and project vaults.
+3. Connect the dashboard or inspection commands with read-only defaults first.
+4. Create a memory health checklist: stale facts, contradictions, oversized hot memory, private data leakage, and missing provenance.
+5. When debugging behavior, compare active memory against source files and recent sessions.
+6. Record findings as memory fixes, not just dashboard observations.
+7. Schedule periodic review only if the dashboard has proven signal.
 
-## Prerequisites
+## Outputs
 
-- Hermes agent running locally
-- hermes-hudui installed (open-source, see the project repo)
-- Web browser for the dashboard UI
+- Memory source map
+- Dashboard/read-only setup notes
+- Memory health report
 
-## Usage
+## Validation
 
-### 1. Connect hermes-hudui to Hermes
+- The operator can trace a behavior to active memory or prove memory is not the cause.
+- Findings include exact memory/file locations.
+- Private memory is not exposed to unauthorized surfaces.
 
-```bash
-# Start hermes-hudui and point it at your Hermes agent
-hermes-hudui connect --agent http://localhost:PORT
-```
+## Operating Rules
 
-### 2. Open the Web UI
-
-```bash
-# Default: http://localhost:3000
-open http://localhost:3000
-```
-
-### 3. Monitor in Real Time
-
-The dashboard streams memory state from your Hermes agent. You can watch:
-- Memory entries being created/updated
-- Goal progress across sessions
-- Session context loading and unloading
-
-## Key Principles
-
-1. **Visibility = trust** — You can't trust what you can't see
-2. **Memory corruption compounds** — Catch it early before it affects agent behavior
-3. **Real-time > post-hoc** — Watch memory as it changes, not just after the fact
-4. **Debugging without guesswork** — The dashboard makes the invisible visible
-
-## For HiveMind Clients
-
-Integrate hermes-hudui into client agent setups for:
-- **Visual debugging** of agent memory during onboarding
-- **Trust-building** through transparency (clients can see what the agent knows)
-- **Catching memory corruption early** before it affects deliverables
-- **Memory health reports** as part of ongoing maintenance
-
-## Related
-
-- Hermes Profiles (witcheer-hermes-profiles-mcp.md) — isolation for multi-agent setups
-- Multi-vault memory (Stella, Second Brain patterns) — complementary memory architecture
-
-## Status
-
-- Source scored: 7/10 CRABHAMMER
-- Extracted: 2026-04-11
-- Skillified: 2026-06-12
+- Keep source attribution when creating artifacts from this skill.
+- Prefer local files and explicit receipts over vague memory.
+- Ask for approval before external sends, production changes, or destructive actions.

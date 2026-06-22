@@ -1,108 +1,44 @@
 ---
-name: obsidian-cli
-description: Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more. Also supports plugin and theme development with commands to reload plugins, run JavaScript, capture errors, take screenshots, and inspect the DOM. Use when the user asks to interact with their Obsidian vault, manage notes, search vault content, perform vault operations from the command line, or develop and debug Obsidian plugins and themes.
----
-parent: [[MOC-agent-skills]]
+name: "obsidian-cli"
+description: "Use the Obsidian CLI to read, create, search, update, and debug Obsidian vault content or plugins. Use when managing notes, tasks, properties, vault search, plugin reloads, screenshots, DOM inspection, or Obsidian automation from the command line."
 ---
 
-# Obsidian CLI
+# obsidian-cli
 
-Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
+## Source Provenance
 
-## Command reference
+This is a BeastmodeVault-authored operational skill derived from: https://help.obsidian.md/cli
 
-Run `obsidian help` to see all available commands. This is always up to date. Full docs: https://help.obsidian.md/cli
+Use the source as provenance and background only. Follow the procedure below as the executable workflow.
 
-## Syntax
+## Purpose
 
-**Parameters** take a value with `=`. Quote values with spaces:
+Interact with a running Obsidian instance safely and repeatably from shell commands.
 
-```bash
-obsidian create name="My Note" content="Hello world"
-```
+## Procedure
 
-**Flags** are boolean switches with no value:
+1. Check that Obsidian is running and the `obsidian` CLI is available.
+2. Run `obsidian help` for the current command surface instead of relying on stale syntax.
+3. Prefer exact `path=` when editing files; use `file=` only for wikilink-style resolution.
+4. Quote values containing spaces and use documented newline escaping for multiline content.
+5. For writes, inspect the target note before editing unless creating a new file.
+6. For plugin/theme debugging, capture errors and screenshots before changing code.
+7. Return the command run and the resulting file/path state.
 
-```bash
-obsidian create name="My Note" silent overwrite
-```
+## Outputs
 
-For multiline content use `\n` for newline and `\t` for tab.
+- CLI command receipts
+- Created/updated notes
+- Debug artifacts when relevant
 
-## File targeting
+## Validation
 
-Many commands accept `file` or `path` to target a file. Without either, the active file is used.
+- Commands succeed without ambiguous file resolution.
+- Writes target the intended vault/file.
+- Plugin debugging includes the observed error, not just a guessed fix.
 
-- `file=<name>` — resolves like a wikilink (name only, no path or extension needed)
-- `path=<path>` — exact path from vault root, e.g. `folder/note.md`
+## Operating Rules
 
-## Vault targeting
-
-Commands target the most recently focused vault by default. Use `vault=<name>` as the first parameter to target a specific vault:
-
-```bash
-obsidian vault="My Vault" search query="test"
-```
-
-## Common patterns
-
-```bash
-obsidian read file="My Note"
-obsidian create name="New Note" content="# Hello" template="Template" silent
-obsidian append file="My Note" content="New line"
-obsidian search query="search term" limit=10
-obsidian daily:read
-obsidian daily:append content="- [ ] New task"
-obsidian property:set name="status" value="done" file="My Note"
-obsidian tasks daily todo
-obsidian tags sort=count counts
-obsidian backlinks file="My Note"
-```
-
-Use `--copy` on any command to copy output to clipboard. Use `silent` to prevent files from opening. Use `total` on list commands to get a count.
-
-## Plugin development
-
-### Develop/test cycle
-
-After making code changes to a plugin or theme, follow this workflow:
-
-1. **Reload** the plugin to pick up changes:
-   ```bash
-   obsidian plugin:reload id=my-plugin
-   ```
-2. **Check for errors** — if errors appear, fix and repeat from step 1:
-   ```bash
-   obsidian dev:errors
-   ```
-3. **Verify visually** with a screenshot or DOM inspection:
-   ```bash
-   obsidian dev:screenshot path=screenshot.png
-   obsidian dev:dom selector=".workspace-leaf" text
-   ```
-4. **Check console output** for warnings or unexpected logs:
-   ```bash
-   obsidian dev:console level=error
-   ```
-
-### Additional developer commands
-
-Run JavaScript in the app context:
-
-```bash
-obsidian eval code="app.vault.getFiles().length"
-```
-
-Inspect CSS values:
-
-```bash
-obsidian dev:css selector=".workspace-leaf" prop=background-color
-```
-
-Toggle mobile emulation:
-
-```bash
-obsidian dev:mobile on
-```
-
-Run `obsidian help` to see additional developer commands including CDP and debugger controls.
+- Keep source attribution when creating artifacts from this skill.
+- Prefer local files and explicit receipts over vague memory.
+- Ask for approval before external sends, production changes, or destructive actions.

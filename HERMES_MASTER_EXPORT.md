@@ -4,95 +4,105 @@
 
 **Generated:** 2026-06-13
 **Corrected:** 2026-06-22
+**Authored Skill Rewrite:** 2026-06-22
 **Repository:** `degenbmp-25/hermes-agent-system`
 
 ---
 
-## Important Correction
+## Current Status
 
-Earlier versions of this export described the X-derived notes as installable skills. That was too loose.
+The repository is now an authored Hermes/OpenClaw skill library.
 
-Most files named `SKILL.md` in this repository are source-backed research/reference notes created from external posts. They are useful to read, but they do not define executable tools, schemas, install commands, or runtime behavior that Hermes/OpenClaw can act on.
+Earlier versions stored many X-derived research notes as `SKILL.md` files. That was the wrong runtime shape. The files have now been rewritten as BeastmodeVault-authored operational skills with:
 
-Default runtime installation is now restricted to the one BeastmodeVault-authored capability:
+- trigger-focused descriptions
+- concrete procedures
+- expected outputs
+- validation rules
+- source provenance
 
-```text
-ops/hermes-vault-compiler/SKILL.md
-```
+Source links remain attribution and background. The installed skill bodies are not raw blog/post excerpts.
 
 ---
 
-## Tier 1: Installable Runtime Capability
+## Start Here
 
-| Skill | Author | Source | Why It Installs |
-|-------|--------|--------|-----------------|
-| `hermes-vault-compiler` | BeastmodeVault | `https://github.com/degenbmp-25/hermes-agent-system` | Defines a concrete vault structure and validation workflow with working tooling in `_tools/` |
-
-Install:
-
-```bash
-HERMES_SKILLS=~/.openclaw/workspace/skills
-LIBRARY=~/BeastmodeVault/vaults/hermes-agent-system
-
-mkdir -p "$HERMES_SKILLS"
-cp -r "$LIBRARY/ops/hermes-vault-compiler" "$HERMES_SKILLS/"
-```
-
-Or run:
+Install the library:
 
 ```bash
 ./setup-agent.sh
 ```
 
----
+Recommended operating order for a new Hermes node:
 
-## Tier 2: Read First, Do Not Install
-
-Read these before committing to more runtime structure:
-
-1. `core/hermes-agent-maturity-levels/SKILL.md`
-2. `multi-agent/hermes-multi-agent-team-profiles/SKILL.md`
-3. `multi-agent/hermes-operator-layer/SKILL.md`
-
-These files are strategic framing material. They can inform decisions, but they should not be loaded as active runtime skills unless converted into BeastmodeVault-owned workflows first.
+1. `hermes-agent-maturity-levels`
+2. `hermes-multi-agent-team-profiles`
+3. `hermes-operator-layer`
+4. `hermes-vault-compiler`
 
 ---
 
-## Tier 3: Background Reference
+## Skill Inventory
 
-Useful context:
+### Architecture
 
-- `core/hermes-setup/SKILL.md`
-- `core/hermes-security/SKILL.md`
-- `core/session-auto-per-day-logging/SKILL.md`
-- `ops/discord-hermes-kanban-orchestration/SKILL.md`
-- `core/hermes-7-new-features/SKILL.md`
-- `core/witcheer-hermes-profiles-mcp/SKILL.md`
-- `integrations/obsidian-openclaw-llm-wiki-rules/SKILL.md`
-- `integrations/obsidian-markdown/SKILL.md`
-- `integrations/obsidian-cli/SKILL.md`
-- `integrations/obsidian-bases/SKILL.md`
-- `architecture/shann-hermes-multi-instance/SKILL.md`
-- `ops/sharbel-hermes-hudui-memory-dashboard/SKILL.md`
-- `research/*/SKILL.md`
-- `seo/*/SKILL.md`
+- `shann-hermes-multi-instance`
 
-These are provenance-preserved notes. Treat them like a research folder, not a runtime library.
+### Core
+
+- `hermes-7-new-features`
+- `hermes-agent-maturity-levels`
+- `hermes-security`
+- `hermes-setup`
+- `session-auto-per-day-logging`
+- `witcheer-hermes-profiles-mcp`
+
+### Integrations
+
+- `obsidian-bases`
+- `obsidian-cli`
+- `obsidian-markdown`
+- `obsidian-openclaw-llm-wiki-rules`
+
+### Multi-Agent
+
+- `hermes-full-architecture-task-gate-review`
+- `hermes-multi-agent-team-profiles`
+- `hermes-operator-layer`
+
+### Ops
+
+- `discord-hermes-kanban-orchestration`
+- `hermes-operator-maintenance`
+- `hermes-task-gate-operations`
+- `hermes-vault-compiler`
+- `sharbel-hermes-hudui-memory-dashboard`
+
+### Research Workflows
+
+- `cyrilxbt-obsidian-hermes-research-converter`
+- `karpathy-obsidian-atomic-notes`
+- `naithan-jones-hermes-agent-for-adhd`
+- `obsidian-unlimited-context`
+
+### SEO
+
+- `alexgroberman-seo-ai-mode`
 
 ---
 
-## Promotion Rule
+## Authorship Rule
 
-A reference note can become a real skill only after a BeastmodeVault-authored rewrite adds:
+A sourced note becomes installable only after it is rewritten into an operational skill with:
 
-- trigger conditions
-- concrete operating steps
+- a clear trigger/use case
+- concrete steps
 - tool/runtime assumptions
-- expected inputs and outputs
-- validation commands
+- expected outputs
+- validation checks
 - source attribution
 
-Until then, it remains reference material.
+Do not install raw excerpts as skills.
 
 ---
 
@@ -102,17 +112,17 @@ Repository validation:
 
 ```bash
 ./_tools/run-all.sh
+git diff --check
 ```
 
-The vault compiler workflow uses:
+Installer smoke test:
 
-- `_tools/check-source-manifest.sh`
-- `_tools/check-wikilinks.sh`
-- `_tools/check-secrets.sh`
-- `templates/SOURCE-MANIFEST.md`
-- `templates/PERSON.md`
-- `templates/DECISION.md`
-- `templates/CONTEXT-PACK.md`
+```bash
+tmp=$(mktemp -d)
+./setup-agent.sh --skills-dir "$tmp"
+find "$tmp" -maxdepth 2 -name SKILL.md | sort
+rm -rf "$tmp"
+```
 
 ---
 
@@ -124,4 +134,4 @@ External references are listed in:
 x-sources/SOURCES.md
 ```
 
-Do not erase provenance. The correct fix is classification, not pretending the research was originally authored as runtime code.
+Keep provenance. Rewrite into authored workflows instead of erasing the sources.

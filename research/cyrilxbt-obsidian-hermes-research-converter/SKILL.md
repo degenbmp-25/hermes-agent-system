@@ -1,71 +1,46 @@
 ---
-type: skill
-name: cyrilxbt-obsidian-hermes-research-converter
-source: https://x.com/cyrilxbt/status/2061601347271577630
-description: A skill for converting research material into structured permanent notes connected to existing vault knowledge using Obsidian and Hermes Agent.
+name: "cyrilxbt-obsidian-hermes-research-converter"
+description: "Convert raw research from an Obsidian inbox into source-backed literature notes and atomic permanent notes connected to existing vault knowledge. Use when processing articles, tweets, transcripts, bookmarks, or research dumps."
 ---
 
-# Implementation
+# cyrilxbt-obsidian-hermes-research-converter
 
-## Trigger
-- Manual: "Convert research in inbox" or "Process research on [TOPIC]"
-- Activated when research material is in 00 - INBOX folder in Obsidian
+## Source Provenance
 
-## Process
+This is a BeastmodeVault-authored operational skill derived from: https://x.com/cyrilxbt/status/2061601347271577630
 
-### Step 1: Read Vault Context
-Read `CLAUDE.md` (or equivalent vault context file) to understand:
-- Current project/engagement context
-- Existing knowledge structure
-- Priority topics and frameworks already established
+Use the source as provenance and background only. Follow the procedure below as the executable workflow.
 
-### Step 2: Identify Research in Inbox
-Scan `00 - INBOX` folder for unprocessed research:
-- Articles, tweets, links, notes
-- Prioritize by recency and relevance to current work
+## Purpose
 
-### Step 3: For Each Research Item
-1. **READ** — Full content extraction
-2. **EXTRACT** key ideas, claims, data points
-3. **SEARCH** existing vault for related notes/frameworks
-4. **CREATE literature note** — Reference-style note with citation and summary
-5. **CREATE permanent notes** — Atomic notes that connect to existing knowledge graph
-6. **ARCHIVE** — Move processed item out of inbox
+Turn incoming research into reusable vault knowledge without losing provenance.
 
-### Step 4: Generate Conversion Summary
-Output a markdown summary:
-```
-Research Converted: [DATE]
-Items Processed: [COUNT]
-New Literature Notes: [LIST]
-New Permanent Notes: [LIST]
-Connections Made: [LIST]
-```
+## Procedure
 
-## Quality Standards
-- Every literature note MUST produce at least one new permanent note
-- Permanent notes should be atomic — one idea per note
-- All permanent notes must link to at least one existing note
-- Use Zettelkasten-style linking: `[[note-title]]`
+1. Read the vault context file and existing taxonomy before creating notes.
+2. Scan the inbox for unprocessed research and group by topic.
+3. For each item, capture source URL, author, date, access date, and confidence.
+4. Create a literature/reference note summarizing the source without overquoting it.
+5. Extract one-concept permanent notes only when the idea will be reused.
+6. Search existing notes before creating new ones; link to related notes and flag contradictions.
+7. Archive or mark processed inbox items with the output note paths.
+8. Produce a conversion receipt.
 
-## Output Location
-Save conversion summary to:
-`04 - HERMES-OUTPUTS/analyses/[DATE]-research-converted.md`
+## Outputs
 
-## Key Principles
-- **Research is inert without connection** — isolated notes are wasted effort
-- **Literature notes are temporary** — they exist to extract permanent notes
-- **Permanence through linking** — a note only becomes permanent when it connects to the existing graph
+- Literature notes
+- Atomic permanent notes
+- Updated links/backlinks
+- Conversion receipt
 
----
+## Validation
 
-# Usage
+- Every source-backed note has provenance.
+- No duplicate note exists for the same concept.
+- Processed inbox items point to their resulting notes.
 
-**Trigger phrases:**
-- "Convert research in inbox"
-- "Process research on [TOPIC]"
-- "Process inbox research"
+## Operating Rules
 
-**Before running:** Ensure 00 - INBOX has research items and CLAUDE.md exists with current context.
-
-**After running:** Check `04 - HERMES-OUTPUTS/analyses/` for conversion summary and verify permanent notes were created.
+- Keep source attribution when creating artifacts from this skill.
+- Prefer local files and explicit receipts over vague memory.
+- Ask for approval before external sends, production changes, or destructive actions.

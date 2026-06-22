@@ -1,126 +1,45 @@
 ---
-type: skill
-name: hermes-7-new-features
-source: https://x.com/alexfinn/status/2057472125909479770
-description: Seven new Hermes Agent features from May 2026 update: session memory logging, background tasks, xAI/Grok OAuth, X posting/fetching, Codex CLI native, AI video generation, and Auto Kanban task breakdown.
+name: "hermes-7-new-features"
+description: "Audit a Hermes installation for May 2026 feature readiness: session logging, background tasks, provider/OAuth support, social posting/fetching, Codex CLI handoff, media generation, and Auto Kanban task breakdown."
 ---
 
-# Hermes Agent — 7 New Features (May 2026 Update)
+# hermes-7-new-features
 
-**Source:** https://x.com/alexfinn/status/2057472125909479770
+## Source Provenance
 
-## Overview
+This is a BeastmodeVault-authored operational skill derived from: https://x.com/alexfinn/status/2057472125909479770
 
-Alex Finn reported 7 major Hermes Agent features from a single week's update. These represent significant capability expansion.
+Use the source as provenance and background only. Follow the procedure below as the executable workflow.
 
-## Feature 1: Session Memory Logging
+## Purpose
 
-**What:** Hermes now auto-logs every session by date.
+Convert a feature-announcement note into an actionable readiness checklist for a Hermes node.
 
-**Capability:** Query "what did we work on April 15th?"
+## Procedure
 
-**Use Case:** Solves the interaction memory layer problem directly. Historical context retrieval becomes automatic.
+1. List the seven feature areas and mark each as available, missing, unknown, or intentionally disabled.
+2. Verify each feature with the local CLI or documented tool list before claiming it exists.
+3. For session logging, confirm sessions can be searched by date or transcript query.
+4. For background tasks, run a harmless test task or inspect configuration that enables async work.
+5. For provider/OAuth/social/media features, check credentials are configured without exposing secrets.
+6. For Codex CLI handoff, verify the command path and working directory conventions.
+7. For Auto Kanban, confirm where tasks are stored and how status transitions are represented.
+8. Produce an upgrade plan with only the missing features that matter for the current operator.
 
-### Implementation
-```
-hermes logs --date 2026-05-15
-hermes session --search "what did we work on"
-```
+## Outputs
 
-## Feature 2: Background Tasks (/background)
+- Feature readiness matrix
+- Credential/config gaps
+- Minimal upgrade plan
 
-**What:** Run multiple tasks simultaneously — main task + N background tasks.
+## Validation
 
-**Pattern:** Give background tasks, continue with main work.
+- Every available/missing claim cites a command result, config file, or local documentation.
+- No secret values are printed.
+- The upgrade plan omits features unrelated to the operator goal.
 
-**Use Case:** Concurrent agent work without blocking.
+## Operating Rules
 
-### Implementation
-```
-/background [task description]
-# Continue with main task
-# Background task completes and notifies
-```
-
-## Feature 3: xAI/Grok OAuth Orchestrator
-
-**What:** Use existing Grok account as orchestrator at no extra cost.
-
-**Significance:** xAI opening OAuth for agent orchestration validates Grok as first-class agent brain.
-
-**Use Case:** Cost-effective multi-model orchestration.
-
-### Implementation
-```
-hermes auth --grok-oauth
-hermes config --orchestrator grok
-```
-
-## Feature 4: X Posting/Fetching via Grok OAuth
-
-**What:** Hermes can search, find, and create X posts natively.
-
-**Use Case:** Full X integration for intelligence pipeline and content automation.
-
-### Implementation
-```
-hermes x --search "AI agents"
-hermes x --post "message"
-hermes x --fetch @username
-```
-
-## Feature 5: Codex CLI Native Integration
-
-**What:** Agent spins up Codex CLI autonomously for coding tasks.
-
-**Use Case:** "Vibe coding" — agent drives Codex without human intervention.
-
-### Implementation
-```
-hermes code --task "build feature"
-# Agent spins up Codex CLI autonomously
-```
-
-## Feature 6: Native AI Video Generation
-
-**What:** Hermes agent can generate AI videos via Grok Imagine integration.
-
-**Use Case:** Content agent pipeline now produces video, not just text.
-
-### Implementation
-```
-hermes video --prompt "description"
-# Uses Grok Imagine for generation
-```
-
-## Feature 7: Auto Kanban Task Breakdown
-
-**What:** Drop goals into triage → Hermes auto-breaks into subagent tasks.
-
-**Use Case:** Automatic task decomposition. Maps to team inbox / task orchestration patterns.
-
-### Implementation
-```
-# Open kanban board
-hermes dashboard
-# Drop goal in triage category
-# Hermes auto-creates subagent tasks
-```
-
-## Priority Actions
-
-1. **Test session memory search** — Query historical work
-2. **Enable Grok OAuth** — Add as orchestrator option
-3. **Explore X integration** — For intelligence pipeline
-4. **Evaluate Codex CLI** — For coding agent workflows
-5. **Test Auto Kanban** — For team orchestration
-
-## Key Insight
-
-**Hermes is accelerating.** 7 major features in one week signals rapid development pace. Auto Kanban = automatic task decomposition is the missing link in team inbox patterns.
-
-## Related Skills
-
-- [[team-inbox-ai-coordination]] — Task orchestration
-- [[grok-watchlist-research-pattern]] — X intelligence
-- [[hermes-multi-agent-architecture]] — Multi-agent setup
+- Keep source attribution when creating artifacts from this skill.
+- Prefer local files and explicit receipts over vague memory.
+- Ask for approval before external sends, production changes, or destructive actions.

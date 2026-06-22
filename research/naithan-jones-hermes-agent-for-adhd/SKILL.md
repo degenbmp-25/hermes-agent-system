@@ -1,157 +1,46 @@
 ---
-type: skill
-name: naithan-jones-hermes-agent-for-adhd
-source: https://x.com/naithanjones/status/2062579117325717671
-description: Build an Hermes Agent system for personal productivity and ADHD management using speech-to-text capture, life priorities documents, daily briefings, and proactive nudges throughout the day.
+name: "naithan-jones-hermes-agent-for-adhd"
+description: "Design an ADHD-friendly Hermes productivity system with low-friction capture, life priorities, daily briefings, reminders, and proactive nudges. Use for personal operating systems that must reduce context switching and preserve follow-through."
 ---
 
-# Implementation
+# naithan-jones-hermes-agent-for-adhd
 
-## System Overview
+## Source Provenance
 
-The core insight: **"Hermes agent has been the single best remedy to my ADHD"**
+This is a BeastmodeVault-authored operational skill derived from: https://x.com/naithanjones/status/2062579117325717671
 
-The system works by:
-1. Capturing thoughts the moment they appear (no friction)
-2. Surfacing relevant context at decision points
-3. Providing structure and accountability automatically
+Use the source as provenance and background only. Follow the procedure below as the executable workflow.
 
-## Component 1: Random Thoughts Vault
+## Purpose
 
-**Purpose:** Zero-friction capture of invasive thoughts and ideas.
+Build external structure for attention, capture, and prioritization without making the user manage a complex system manually.
 
-**Setup:**
-- Create `RANDOM-THOUGHTS/` folder in Obsidian
-- Enable speech-to-text input (voice → text → file)
-- When invasive thought appears, capture it immediately
+## Procedure
 
-**Process:**
-1. Thought enters mind
-2. Speak into voice-to-text (phone or computer)
-3. Captured to `RANDOM-THOUGHTS/[DATE]-thoughts.md`
-4. Never lose an idea, never interrupt flow
+1. Create a low-friction capture lane: voice, mobile note, inbox file, or Discord channel.
+2. Create a priorities file with current goals, constraints, obligations, and anti-goals.
+3. Define daily briefing inputs: calendar, tasks, inbox, weather/context if relevant, and top priorities.
+4. Define nudge rules: what warrants interruption, what waits for briefing, and quiet hours.
+5. Create a weekly review that converts captured thoughts into tasks, notes, or trash.
+6. Keep the system small; remove any ritual the user stops using.
+7. Protect privacy by scoping personal notes away from shared/team contexts.
 
-**Key insight:** Don't fight the thought — capture it and return to focus.
+## Outputs
 
-## Component 2: Life Priorities Markdown
+- Capture workflow
+- Priorities file
+- Daily briefing format
+- Nudge policy
+- Weekly review checklist
 
-**Purpose:** Explicitly explain to Hermes what's important, in order.
+## Validation
 
-**File:** `LIFE-PRIORITIES.md` in vault root
+- Capture takes less than 10 seconds from thought to saved item.
+- The briefing names no more than 3 primary priorities.
+- Nudges are useful enough that the user does not mute them.
 
-**Structure:**
-```
-# Life Priorities
+## Operating Rules
 
-## Personal (ordered most → least important)
-1. Health and fitness
-2. Quality time with family
-3. Creative projects
-4. ...
-
-## Professional (ordered most → least important)
-1. Client delivery excellence
-2. Business development
-3. Skill development
-4. ...
-
-## Current Focus (this week/quarter)
-- [ ] Priority 1
-- [ ] Priority 2
-- [ ] Priority 3
-```
-
-**Update cadence:** Review and update monthly or when priorities shift.
-
-## Component 3: Hermes Review Process
-
-**Purpose:** Hermes reviews the vault multiple times per day and maps random thoughts to action.
-
-**Daily review schedule:**
-- **Morning:** Prep for the day (briefing)
-- **Midday:** Check-in and adjustment
-- **Evening:** Review and prep for tomorrow
-
-**Review process:**
-1. Read `RANDOM-THOUGHTS/` folder
-2. Read `LIFE-PRIORITIES.md`
-3. Check calendar and email
-4. Map thoughts to:
-   - Calendar (schedule something)
-   - Email (respond to someone)
-   - Projects in progress (add to task list)
-   - Cross-reference priorities (is this aligned?)
-
-## Component 4: Daily Briefing Cron
-
-**Morning briefing (start of day):**
-```
-Subject: Your Day Brief — [DATE]
-
-Based on your calendar:
-- [Meeting 1] at [time]
-- [Meeting 2] at [time]
-
-From your random thoughts:
-- [Thought 1] → suggests [action]
-- [Thought 2] → aligns with [existing priority]
-
-Today's focus: [Priority from LIFE-PRIORITIES]
-
-Action items:
-- [ ] [Task 1]
-- [ ] [Task 2]
-```
-
-**Evening briefing (prep for tomorrow):**
-```
-Subject: Tomorrow Prep — [DATE]
-
-Tomorrow's priorities:
-- [ ] [Priority 1]
-- [ ] [Priority 2]
-
-From today's thoughts:
-- [Unprocessed thought] → needs attention
-
-Good night.
-```
-
-## Component 5: Proactive Text Agent
-
-**Purpose:** Send texts throughout the day with relevant things to consider.
-
-**Examples:**
-- "You have a call with [client] in 30 minutes. Prep notes: [relevant context]"
-- "You mentioned wanting to follow up on [topic] — good time now?"
-- "You're two hours into deep work. Consider a break."
-
-**Implementation:**
-- Hermes Agent triggers SMS/text via integration
-- Sends at contextually relevant moments
-- Keeps user on track without them having to remember
-
-## Component 6: Future State — 24/7 Listener/Coach
-
-**Desired build:** Continuous screen/audio access that delivers proactive insights via voice while working.
-
-This is the ultimate ADHD aid:
-- Intercept intrusive thoughts as they occur
-- Contextualize against current work
-- Provide just-in-time coaching
-
----
-
-# Usage
-
-**Setup order:**
-1. Create `LIFE-PRIORITIES.md` — most important document
-2. Set up `RANDOM-THOUGHTS/` folder with voice input
-3. Configure Hermes review cron (morning + evening)
-4. Set up daily briefing delivery (Discord DM, email, text)
-5. Configure proactive text agent for midday nudges
-6. Iterate and refine priorities based on what surfaces
-
-**Key principle:** The system must be easier than fighting the thought. Voice capture with zero friction is non-negotiable.
-
-**Success metric:** Thoughts that used to derail focus now get captured and processed without breaking flow.
+- Keep source attribution when creating artifacts from this skill.
+- Prefer local files and explicit receipts over vague memory.
+- Ask for approval before external sends, production changes, or destructive actions.

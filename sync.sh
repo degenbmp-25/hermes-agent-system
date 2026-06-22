@@ -7,7 +7,8 @@
 #
 set -e
 
-AGENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Vault location (canonical local copy)
+AGENT_DIR="$HOME/BeastmodeVault/vaults/hermes-agent-system"
 BRANCH="${1:-main}"
 SKILLS_DIR=""
 

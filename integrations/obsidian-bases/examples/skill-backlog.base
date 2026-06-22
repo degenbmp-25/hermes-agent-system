@@ -1,0 +1,46 @@
+# Skill Backlog
+name: Skill Backlog
+filters:
+  and:
+    - 'status != "complete"'
+
+formulas:
+  priority_score: 'priority * (10 - effort)'
+  age_days: 'date(today).diff(date(created), "days")'
+
+properties:
+  name:
+    displayName: Skill Name
+  status:
+    displayName: Status
+  priority:
+    displayName: Priority
+  effort:
+    displayName: Effort (1-10)
+  owner:
+    displayName: Owner
+  created:
+    displayName: Created
+  dependencies:
+    displayName: Dependencies
+
+views:
+  - type: table
+    name: By Priority
+    order:
+      - formula.priority_score
+      - effort
+  
+  - type: board
+    name: By Status
+    groupBy:
+      property: status
+      direction: ASC
+  
+  - type: table
+    name: My Skills
+    filters:
+      and:
+        - 'owner == "Beastmode"'
+    order:
+      - formula.priority_score

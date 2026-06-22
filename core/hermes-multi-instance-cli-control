@@ -1,0 +1,80 @@
+---
+type: skill
+name: hermes-multi-instance-cli-control
+source: https://x.com/shannholmberg/status/2055059408305168691
+description: CLI agent controls multiple Hermes instances — separate folder with CLI agent managing the "Hermes company" like a multi-instance control plane.
+---
+
+# Concept
+Shann is migrating from a monolithic single Hermes agent to separate instances controlled by a CLI agent. This is the "company brain" pattern in action — one agent managing many.
+
+# Key Innovation
+- **Separate agent instances** — each with own domain focus
+- **CLI as controller** — separate folder with CLI agent controlling the "company"
+- **Fast instantiation** — spinning up new agents in under 2 minutes
+- **Multi-instance as "hack"** — emerging pattern for scaling agent operations
+
+# Architecture
+
+```
+CLI Controller Agent
+├── Hermes Instance 1 (Voice)
+├── Hermes Instance 2 (Research)
+├── Hermes Instance 3 (Technical)
+└── Hermes Instance N (per domain)
+```
+
+# Implementation
+
+## 1. Design Domain Boundaries
+Decide how to split agent responsibilities:
+- Voice/Communications
+- Research/Verification
+- Technical/Debugging
+- Strategy/Positioning
+- Memory/Learning
+
+## 2. Create Agent Folders
+Each agent instance in its own folder:
+```
+/agents
+  /hermes-voice
+  /hermes-research
+  /hermes-technical
+  /controller-cli
+```
+
+## 3. Set Up CLI Controller
+The CLI controller agent:
+- Coordinates across instances
+- Routes tasks to appropriate agent
+- Aggregates results
+- Maintains company-level memory
+
+## 4. Fast Instance Creation
+When you need a new agent:
+1. Clone base Hermes config
+2. Customize system prompt for new domain
+3. Register with CLI controller
+4. Agent ready in <2 minutes
+
+## 5. Inter-Agent Communication
+- Tasks flow through controller, not direct agent-to-agent
+- Controller routes to correct instance
+- Results aggregated by controller
+- Receipts logged to shared ledger
+
+# Usage
+
+## Adding a New Agent
+1. Identify the domain gap
+2. Create new folder from base config
+3. Customize system prompt for domain
+4. Register with CLI controller
+5. Controller now routes to new agent
+
+## Task Routing
+User → CLI Controller → Appropriate Hermes Instance → Receipt → Controller汇总 → User
+
+## Scaling Pattern
+Start with 2-3 agents, scale as domains become clear. Don't over-engineer upfront — add instances when something bleeds.

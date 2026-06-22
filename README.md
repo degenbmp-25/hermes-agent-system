@@ -1,79 +1,93 @@
-# Hermes Agent System — Reproducible Template
+# Hermes Agent System — Vault Compiler + Reference Library
 
-> Universal agent system setup for cloning top-of-the-line agent infrastructure across machines and platforms.
+> A small installable Hermes/OpenClaw capability plus source-backed research notes for building better agent systems.
 
-## What Is This?
+## What This Is
 
-A structured skill library + bootstrap scripts that let you stand up a fully-equipped agent system on any machine in under 5 minutes. Built for the Hermes/Clawdaunt architecture but agent-system agnostic.
+This repository has two kinds of material:
+
+1. **Installable runtime skill:** `ops/hermes-vault-compiler`
+2. **Reference/research notes:** X-derived `SKILL.md` files preserved for reading and provenance
+
+The reference notes are not default runtime skills. They do not define tools, schemas, install commands, or reliable runtime behavior. Installing all of them would load a large amount of commentary into context without adding real capability.
 
 ## Quick Start
 
 ```bash
-# One-shot setup (detects your agent system automatically)
-curl -fsSL https://raw.githubusercontent.com/degenbmp-25/hermes-agent-system/main/setup-agent.sh | bash
-
-# Or clone and run manually
+# Clone and install the one real runtime skill
 git clone https://github.com/degenbmp-25/hermes-agent-system.git
 cd hermes-agent-system
 ./setup-agent.sh
 ```
 
+By default, `setup-agent.sh` installs only:
+
+```text
+ops/hermes-vault-compiler
+```
+
 ## What Gets Installed
 
-| Component | Description |
-|-----------|-------------|
-| `core/` | Core Hermes skills (maturity levels, new features) |
-| `multi-agent/` | Multi-agent orchestration, team profiles |
-| `research/` | Research converters, ADHD-friendly patterns |
-| `ops/` | Kanban orchestration, cron coordination |
-| `integrations/` | Obsidian, OpenClaw, CLI integration skills |
-| `architecture/` | Reference architectures (multi-instance, profiles) |
+| Component | Runtime Installed | Description |
+|-----------|-------------------|-------------|
+| `ops/hermes-vault-compiler` | Yes | BeastmodeVault-authored vault structure and validation workflow |
+| `_tools/` | No | Repository validation scripts used by the vault compiler workflow |
+| `templates/` | No | Source manifest, person, decision, and context-pack templates |
+| `core/`, `multi-agent/`, `research/`, `integrations/`, `architecture/` | No | Source-backed reference notes; read manually |
 
-## Supported Agent Systems
+## Recommended Reading Order
 
-| System | Platform | Skill Location |
-|--------|----------|---------------|
-| OpenClaw | PC (Windows/WSL/Linux) | `~/.openclaw/skills/` |
-| Hermes | Mac | `~/.openclaw/skills/` |
-| Other | Any | Configurable via `--skills-dir` |
+Read these before adding more runtime surface:
 
-## Architecture
+1. `core/hermes-agent-maturity-levels/SKILL.md`
+2. `multi-agent/hermes-multi-agent-team-profiles/SKILL.md`
+3. `multi-agent/hermes-operator-layer/SKILL.md`
 
-```
+Useful background:
+
+- `core/hermes-setup/SKILL.md`
+- `core/hermes-security/SKILL.md`
+- `core/session-auto-per-day-logging/SKILL.md`
+- `ops/discord-hermes-kanban-orchestration/SKILL.md`
+
+## Repository Layout
+
+```text
 hermes-agent-system/
-├── core/               # Foundational skills
-├── multi-agent/        # Multi-instance orchestration
-├── research/          # Research & knowledge patterns
-├── ops/               # Operational runbooks
-├── integrations/       # Tool integrations
-├── architecture/      # Reference architectures
-├── setup-agent.sh     # One-shot bootstrap
-├── sync.sh           # Scheduled sync (git pull)
-└── README.md
+├── ops/hermes-vault-compiler/   # Installable runtime skill
+├── _tools/                      # Validation scripts
+├── templates/                   # Vault note templates
+├── core/                        # Reference notes
+├── multi-agent/                 # Reference notes
+├── research/                    # Reference notes
+├── integrations/                # Reference notes
+├── architecture/                # Reference notes
+├── x-sources/                   # Source provenance
+├── setup-agent.sh               # Installs only hermes-vault-compiler
+└── sync.sh                      # Pull latest repo changes
 ```
+
+## Promote A Reference Into A Skill
+
+Do not install research notes directly. Promote a reference only after authoring a new BeastmodeVault-owned capability with:
+
+- a clear trigger/use case
+- concrete steps
+- tool/runtime assumptions
+- validation commands
+- source attribution
 
 ## Daily Workflow
 
 ```bash
-# Pull latest from repo (after Hermes pushes updates)
 ./sync.sh
-
-# Or add to cron for automatic sync
-crontab -e
-# 0 */6 * * * /path/to/hermes-agent-system/sync.sh >> ~/.logs/agent-sync.log 2>&1
+./_tools/run-all.sh
 ```
 
-## For HiveMind Clients
+## Supported Agent Systems
 
-This repo IS the product. Clone it, run `setup-agent.sh`, and you have a production-grade agent system in minutes.
-
-## Updating the Skill Library
-
-```bash
-cd hermes-agent-system
-# Make changes to skill files...
-git add .
-git commit -m "Update multi-agent orchestration skills"
-git push
-# Agents on other machines will pull on next sync
-```
+| System | Platform | Default Skill Location |
+|--------|----------|------------------------|
+| OpenClaw | Linux/WSL | `~/.openclaw/skills/` |
+| Hermes | Mac | `~/.openclaw/skills/` |
+| Other | Any | configurable via `--skills-dir` |

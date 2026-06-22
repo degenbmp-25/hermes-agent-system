@@ -1,75 +1,57 @@
-# Hermes Skill Library — Quick Import Reference
+# Hermes Export — Quick Import Reference
 
-Copy individual skills to your Hermes setup with these commands:
+This repository contains one installable runtime skill plus a set of research/reference notes.
+
+Do not bulk-install the X-derived `SKILL.md` files into Hermes/OpenClaw runtime context. They are source-backed research notes, not executable capabilities.
+
+## Installable Skill
 
 ```bash
 HERMES_SKILLS=~/.openclaw/workspace/skills
-LIBRARY=~/BeastmodeVault/vaults/hermes-skill-library
+LIBRARY=~/BeastmodeVault/vaults/hermes-agent-system
 
-# === CORE (Start Here) ===
-cp -r $LIBRARY/core/hermes-7-new-features $HERMES_SKILLS/
-cp -r $LIBRARY/core/hermes-agent-maturity-levels $HERMES_SKILLS/
-
-# === MULTI-AGENT (Level 2+) ===
-cp -r $LIBRARY/multi-agent/hermes-multi-agent-team-profiles $HERMES_SKILLS/
-cp -r $LIBRARY/multi-agent/hermes-operator-layer $HERMES_SKILLS/
-cp -r $LIBRARY/multi-agent/hermes-full-architecture-task-gate-review $HERMES_SKILLS/
-
-# === RESEARCH & KNOWLEDGE ===
-cp -r $LIBRARY/research/cyrilxbt-obsidian-hermes-research-converter $HERMES_SKILLS/
-cp -r $LIBRARY/research/naithan-jones-hermes-agent-for-adhd $HERMES_SKILLS/
-cp -r $LIBRARY/research/karpathy-obsidian-atomic-notes $HERMES_SKILLS/
-
-# === OPS & GOVERNANCE ===
-cp -r $LIBRARY/ops/hermes-operator-layer $HERMES_SKILLS/
-cp -r $LIBRARY/ops/hermes-full-architecture-task-gate-review $HERMES_SKILLS/
-cp -r $LIBRARY/ops/discord-hermes-kanban-orchestration $HERMES_SKILLS/
-
-# === INTEGRATIONS ===
-cp -r $LIBRARY/integrations/obsidian-bases $HERMES_SKILLS/
-cp -r $LIBRARY/integrations/obsidian-cli $HERMES_SKILLS/
-cp -r $LIBRARY/integrations/obsidian-markdown $HERMES_SKILLS/
+mkdir -p "$HERMES_SKILLS"
+cp -r "$LIBRARY/ops/hermes-vault-compiler" "$HERMES_SKILLS/"
 ```
 
----
+## Why Only This One
 
-## By Maturity Level
+`ops/hermes-vault-compiler` is authored by BeastmodeVault and has working repository tooling:
 
-### Level 1: Prototype
-```bash
-cp -r $LIBRARY/core/hermes-7-new-features $HERMES_SKILLS/
-cp -r $LIBRARY/core/hermes-agent-maturity-levels $HERMES_SKILLS/
-```
+- `_tools/run-all.sh`
+- `_tools/check-source-manifest.sh`
+- `_tools/check-wikilinks.sh`
+- `_tools/check-secrets.sh`
+- `templates/SOURCE-MANIFEST.md`
+- `templates/PERSON.md`
+- `templates/DECISION.md`
+- `templates/CONTEXT-PACK.md`
 
-### Level 2: Specialize
-```bash
-cp -r $LIBRARY/multi-agent/hermes-multi-agent-team-profiles $HERMES_SKILLS/
-cp -r $LIBRARY/research/naithan-jones-hermes-agent-for-adhd $HERMES_SKILLS/
-```
+It defines a concrete workflow and validation gate. It earns runtime installation.
 
-### Level 3: Orchestrate
-```bash
-cp -r $LIBRARY/multi-agent/hermes-operator-layer $HERMES_SKILLS/
-cp -r $LIBRARY/multi-agent/hermes-full-architecture-task-gate-review $HERMES_SKILLS/
-cp -r $LIBRARY/ops/discord-hermes-kanban-orchestration $HERMES_SKILLS/
-```
+## Read, Do Not Install
 
-### Level 4: Automate
-```bash
-# All of the above + cron coordination (see hermes-operator-layer/cron.md)
-```
+These are useful strategic references, but should stay out of default runtime skills:
 
----
+1. `core/hermes-agent-maturity-levels/SKILL.md`
+2. `multi-agent/hermes-multi-agent-team-profiles/SKILL.md`
+3. `multi-agent/hermes-operator-layer/SKILL.md`
 
-## Full Import (Everything)
-```bash
-cp -r $LIBRARY/core/* $HERMES_SKILLS/
-cp -r $LIBRARY/multi-agent/* $HERMES_SKILLS/
-cp -r $LIBRARY/research/* $HERMES_SKILLS/
-cp -r $LIBRARY/ops/* $HERMES_SKILLS/
-cp -r $LIBRARY/integrations/* $HERMES_SKILLS/
-```
+Background reading:
 
----
+- `core/hermes-setup/SKILL.md`
+- `core/hermes-security/SKILL.md`
+- `core/session-auto-per-day-logging/SKILL.md`
+- `ops/discord-hermes-kanban-orchestration/SKILL.md`
 
-*Last updated: 2026-06-12*
+## Full Reference Library
+
+The remaining `SKILL.md` files are preserved for provenance and review. Treat them as imported research notes from external creators, not as commands to install.
+
+When a reference note produces an actual repeatable workflow, promote it by authoring a new BeastmodeVault-owned skill with:
+
+- a clear trigger/use case
+- concrete steps
+- tool/runtime assumptions
+- validation commands
+- source attribution
